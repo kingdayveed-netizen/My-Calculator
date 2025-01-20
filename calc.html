@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator App</title>
+<style>
+Body { background-color: brown;}
+.calculator { width: 300px; margin: 50px auto; text-align: center; background-color: blue;}
+input { width: 100%; height: 50px; font-size: 1.5em; margin-bottom: 10px; text-align: right; color: azure;}
+button { width: 22%; height: 50px; font-size: 1.5em; margin: 5px; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="calculator">
+<input type="text" id="result" disabled>
+<div>
+<button onclick="clearResult()">C</button>
+<button onclick="appendValue('/')">/</button>
+<button onclick="appendValue('*')">*</button>
+<button onclick="appendValue('-')">-</button>
+</div>
+<div>
+<button onclick="appendValue('7')">7</button>
+<button onclick="appendValue('8')">8</button>
+<button onclick="appendValue('9')">9</button>
+<button onclick="appendValue('+')">+</button>
+
+</div>
+<div>
+<button onclick="appendValue('4')">4</button>
+<button onclick="appendValue('5')">5</button>
+<button onclick="appendValue('6')">6</button>
+<button onclick="calculate()">=</button>
+</div>
+<div>
+<button onclick="appendValue('1')">1</button>
+<button onclick="appendValue('2')">2</button>
+<button onclick="appendValue('3')">3</button>
+<button onclick="appendValue('0')">0</button>
+</div>
+</div>
+<script>
+function appendValue(value) {
+document.getElementById('result').value += value;
+}
+
+function clearResult() {
+document.getElementById('result').value = "";
+}
+
+function calculate() {
+try {
+
+const result = eval(document.getElementById('result').value);
+document.getElementById('result').value = result;
+} catch (error) {
+alert('Invalid calculation');
+clearResult();
+}
+}
+</script>
+</body>
+</html>
